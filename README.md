@@ -1,3 +1,4 @@
+[![Docker Build & Publish](https://github.com/itaru2622/android-studio/actions/workflows/build_publish.yml/badge.svg)](https://github.com/itaru2622/android-studio/actions/workflows/build_publish.yml)
 
 ## basic use example on linux
 ```bash
