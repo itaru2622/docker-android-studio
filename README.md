@@ -18,7 +18,7 @@ yourhost$ docker run --name android-studio -it --rm --network host --privileged 
             -v ${top_dir}/projects:/home/android/AndroidStudioProjects \
             -e ANDROID_HOME=/home/android/Android/Sdk \
             -e DISPLAY=${DISPLAY} \
-            itaru2622/android-studio:bullseye /bin/bash
+            itaru2622/android-studio:bookworm /bin/bash
 
 # start android studio
 inContainer$ studio.sh

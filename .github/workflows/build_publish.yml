@@ -25,10 +25,14 @@ env:
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  TAG_LATEST: bullseye
+  # vars.* : github repository variables
+  TAG_LATEST: ${{ vars.DOCKER_EXPORT_TAG }}
+  BASE_IMG: ${{ vars.DOCKER_BASE_IMG}}
+  VER_STUDIO: ${{ vars.VER_STUDIO }}
+  VER_JDK: ${{ vars.VER_JDK }}
   UID: 1000
   UNAME: android
-  VER_STUDIO: 2021.3.1.16
+
 
 jobs:
   build:
@@ -77,6 +81,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
+            base=${{ env.BASE_IMG }}
+            ver_studio=${{ env.VER_STUDIO }}
+            ver_jdk=${{ env.VER_JDK }}
             uid=${{ env.UID }}
             uname=${{ env.UNAME }}
-            ver_studio=${{ env.VER_STUDIO }}
