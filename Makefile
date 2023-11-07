@@ -8,7 +8,7 @@ uid=1000
 uname=android
 
 # directories in container (defaults of studio.sh)
-sdk_dir=/home/${uname}/Android/Sdk
+sdk_dir=/home/${uname}/Android/sdk
 pj_dir=/home/${uname}/AndroidStudioProjects
 
 # docker names, container and image and base image
@@ -39,8 +39,11 @@ run: _prep
 	${img_name} /bin/bash
 
 build:
-	docker build --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${https_proxy} --build-arg no_proxy=${no_proxy} \
-	--build-arg uid=${uid} --build-arg uname=${uname} --build-arg ver_studio=${ver_studio} --build-arg ver_jdk=${ver_jdk} --build-arg base=${img_base} -t ${img_name} .
+	docker build \
+	--build-arg uid=${uid} --build-arg uname=${uname} --build-arg base=${img_base} --build-arg ver_jdk=${ver_jdk} \
+        --build-arg ver_studio=${ver_studio} --build-arg sdk_dir=${sdk_dir}  --build-arg pj_dir=${pj_dir} \
+        --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${https_proxy} --build-arg no_proxy=${no_proxy} \
+        -t ${img_name} .
 
 runwith_daemon: _prep
 	docker run --name ${container_name} -itd --restart always --network host --privileged --user root \
