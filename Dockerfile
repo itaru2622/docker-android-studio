@@ -31,6 +31,7 @@ ARG uname=android
 RUN addgroup --system --gid ${uid} ${uname} ;\
     adduser  --system --gid ${uid} --uid ${uid} --shell /bin/bash --home /home/${uname} ${uname} ; \
     echo "${uname}:${uname}" | chpasswd; \
+    usermod -aG plugdev ${uname}; \
     echo "set mouse-=a" > /home/${uname}/.vimrc; \
     (cd /etc/skel; find . -type f -print | tar cf - -T - | tar xvf - -C/home/${uname} ) ;
 
