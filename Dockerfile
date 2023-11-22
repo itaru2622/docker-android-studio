@@ -37,11 +37,11 @@ RUN addgroup --system --gid ${uid} ${uname} ;\
 
 ARG pj_dir=/home/${uname}/AndroidStudioProjects
 ARG sdk_dir=/home/${uname}/Android/Sdk
-RUN mkdir -p /home/${uname}/.android /home/${uname}/.config ${pj_dir} ${sdk_dir}; \
+RUN mkdir -p /home/${uname}/.android /home/${uname}/.config /home/${uname}/.ssh ${pj_dir} ${sdk_dir}; \
     chown -R ${uname}:${uname} /opt/android /home/${uname}  ${pj_dir} ${sdk_dir}
 
 
-VOLUME /home/${uname}/.android /home/${uname}/.config ${pj_dir} ${sdk_dir}
+VOLUME /home/${uname}/.android /home/${uname}/.config /home/${uname}/.ssh ${pj_dir} ${sdk_dir}
 # https://developer.android.com/tools/variables
 ENV ANDROID_HOME=${sdk_dir}
 ENV PATH=${PATH}:/opt/android/studio/bin:${sdk_dir}/tools:${sdk_dir}/tools/bin:${sdk_dir}/platform-tools
