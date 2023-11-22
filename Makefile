@@ -8,7 +8,7 @@ uid=1000
 uname=android
 
 # directories in container (defaults of studio.sh)
-sdk_dir=/home/${uname}/Android/sdk
+sdk_dir=/home/${uname}/Android/Sdk
 pj_dir=/home/${uname}/AndroidStudioProjects
 
 # docker names, container and image and base image

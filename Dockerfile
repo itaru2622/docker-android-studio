@@ -36,7 +36,7 @@ RUN addgroup --system --gid ${uid} ${uname} ;\
     (cd /etc/skel; find . -type f -print | tar cf - -T - | tar xvf - -C/home/${uname} ) ;
 
 ARG pj_dir=/home/${uname}/AndroidStudioProjects
-ARG sdk_dir=/home/${uname}/Android/sdk
+ARG sdk_dir=/home/${uname}/Android/Sdk
 RUN mkdir -p /home/${uname}/.android /home/${uname}/.config ${pj_dir} ${sdk_dir}; \
     chown -R ${uname}:${uname} /opt/android /home/${uname}  ${pj_dir} ${sdk_dir}
 
