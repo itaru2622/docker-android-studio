@@ -21,6 +21,8 @@ ver_studio=2022.3.1.20
 # jdk version
 ver_jdk=17
 
+# extra packages to install
+extra_app=
 
 # targes for ops. >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -42,6 +44,7 @@ build:
 	docker build \
 	--build-arg uid=${uid} --build-arg uname=${uname} --build-arg base=${img_base} --build-arg ver_jdk=${ver_jdk} \
         --build-arg ver_studio=${ver_studio} --build-arg sdk_dir=${sdk_dir}  --build-arg pj_dir=${pj_dir} \
+        --build-arg extra_app=${extra_app} \
         --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${https_proxy} --build-arg no_proxy=${no_proxy} \
         -t ${img_name} .
 

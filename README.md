@@ -24,7 +24,7 @@ yourhost$ docker run --name android-studio -it --rm --network host --privileged 
 inContainer$ studio.sh
 ```
 
-## build and use your own image on linux
+## how to build docker image by yourself and run it
 
 - requires: make
 
@@ -37,4 +37,37 @@ yourhost$ make build
 yourhost$ make run
 
 inContainer$ studio.sh
+```
+
+## how to build your custom docker image
+
+- modify Makefile to meet your preference.
+
+```Makefile
+#   original              => your preference
+# -------------------------------------------------
+img_base=debian:bookworm  => img_base=ubuntu:22.04
+uname=android             => uname=anyname
+uid=1000                  => uid=anynumber
+extra_app=                => extra_app=mousepad
+
+# and more...
+```
+
+or, you can specify your preference at make command without modifying Makefile, as below:
+
+```bash
+yourhost$ make build img_base=ubuntu:22.04 uname=anyname uid=number extra_app=mousepad       ver_studio=2022.3.1.20 ver_jdk=17
+# where img_base   is the docker base image in the above case, ubuntu:22.04 ( the distrubution has to support apt )
+#       uname      is the user name in docker container
+#       uid        is the user ID   in docker container
+#       extra_app  is the packages to install in docker image, in the above case mousepad
+#       ver_studio is the version number of android studio
+#       ver_jdk    is the version number of openJDK
+
+yourhost$ make run uname=anyname
+# where uname should be equal to the uname which you specified in build ops.
+
+inContainer$ studio.sh
+
 ```
