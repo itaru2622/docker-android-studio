@@ -8,7 +8,7 @@ ARG extra_app
 
 RUN apt update
 RUN apt install -y curl git make wget screen bash-completion openssh-client tzdata unzip locales-all \
-                   python3 python3-pip openjdk-${ver_jdk}-jdk ibus-mozc vim ${extra_app}
+                   python3 python3-pip openjdk-${ver_jdk}-jdk ibus-mozc vim net-tools iputils-ping iproute2 ${extra_app}
 
 #RUN localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
 
